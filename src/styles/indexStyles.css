@@ -1,13 +1,18 @@
 /* Index page */
-#header-box{
+#header-box {
     width: 100%;
     height: 20vh;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    font-size: clamp(28px, 5vmin, 60px);
 }
-#seach-bar{
+#header-box > h1 {
+    margin: 0;
+    font-weight: lighter;
+}
+#seach-bar {
     width: 100%;
     height: 10vh;
     background-color: white;
@@ -16,9 +21,9 @@
     align-items: center;
     position: sticky;
     top: 0;
-    position: -webkit-sticky;
+    position: sticky;
 }
-#seach-bar-box{
+#seach-bar-box {
     width: 800px;
     height: 100%;
     display: flex;
@@ -26,22 +31,22 @@
     align-items: center;
     background-color: transparent;
 }
-#search{
+#search {
     width: 90%;
     height: 50%;
-    font-size: 2vh;
+    font-size: clamp(16px, 5vmin, 24px);
     border: none;
     outline: none;
     text-align: center;
     border-bottom: 2.5px solid rgb(133, 133, 133);
 }
-#search:focus::placeholder{
-    color: transparent
+#search:focus::placeholder {
+    color: transparent;
 }
 
 /* Seach page */
 
-#contents{
+#contents {
     width: 100%;
     height: auto;
     background-color: white;
@@ -51,28 +56,27 @@
     align-items: center;
 }
 
-
 /* Components boxConent*/
-.card{
+.card {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background-color: white;
 }
-.main-img-box{
+.main-img-box {
     max-width: 300px;
     height: 450px;
     background-color: transparent;
     display: flex;
     margin: 10px;
 }
-.main-img{
+.main-img {
     max-height: 100%;
     max-width: 100%;
     object-fit: cover;
     border-radius: 15px;
 }
-.info-card{
+.info-card {
     max-width: 500px;
     height: 450px;
     background-color: transparent;
@@ -80,24 +84,32 @@
     flex-direction: column;
     margin: 10px;
 }
-.title-box{
+.title-box {
     width: 100%;
-    height: 12%;
-    background-color: transparent;
     overflow: hidden;
+    height: 12%;
 }
-.descript{
+.title{
+    text-decoration: none;
+    color: black;
+    font-size: clamp(24px, 5vmin, 32px);
+    transition: 0.5s;
+}
+.title:hover{
+    color: rgb(87, 87, 87);
+}
+.descript {
     width: 100%;
     height: 40%;
     background-color: transparent;
     overflow: hidden;
 }
-.tag{
+.tag {
     width: 100%;
     height: 8%;
     background-color: transparent;
 }
-.img-info-container{
+.img-info-container {
     width: 100%;
     height: 40%;
     background-color: transparent;
@@ -106,10 +118,23 @@
     align-items: center;
     grid-gap: 10px;
 }
-.img-info{
+.img-info {
     width: 100%;
     border-radius: 15px;
     max-height: 106.88px;
     object-fit: cover;
     object-position: 0 35%;
 }
+
+/* Universal text style*/
+.grayText{
+    color: gray;
+}
+.dogeText{
+    color:deepskyblue;
+}
+.hoverText:hover{
+    text-decoration: none;
+}
+
+

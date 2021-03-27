@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import '../styles/searchStyles.css'
-import BoxContent from '../components/boxContent'
-import {useLocation} from 'react-router-dom'
+import React, { useEffect, useState } from "react"
+import BoxContent from "../components/boxContent"
+import { useLocation } from "react-router-dom"
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search)
 }
 
-
 const Search = () => {
     const [trips, setTrips] = useState([])
     const [tripsSearch, setTripsSearch] = useState([])
-    const url = 'http://localhost:9000/trips'
+    const url = "http://localhost:9000/trips"
     const query = useQuery()
-    const keyword = query.get("keyword")?? ""
-    console.log(keyword)
+    const keyword = query.get("keyword") ?? ""
 
     const fetchData = async (url, setJson) => {
         const response = await fetch(url)
         if (response.status === 200) {
             const json = await response.json()
             setJson(json)
-        }
-        else {
+        } else {
             setJson([])
+            console.log(response.status)
         }
-    
     }
 
     const searchEnging = (target, trip) => {
@@ -33,7 +29,11 @@ const Search = () => {
         const title = trip.title.toLocaleLowerCase()
         const description = trip.description.toLocaleLowerCase()
         const toLowerOftext = target.toLocaleLowerCase()
-        if(title.includes(toLowerOftext) || description.includes(toLowerOftext) || tagMatching.length > 0){
+        if (
+            title.includes(toLowerOftext) ||
+            description.includes(toLowerOftext) ||
+            tagMatching.length > 0
+        ) {
             return trip
         }
         return false
@@ -50,16 +50,29 @@ const Search = () => {
 
     useEffect(() => {
         searchHandle()
-        console.log("s")
     }, [trips, keyword])
 
+    const renderCard = (arr) => {
+        if(arr.length > 0){
+            return (
+                arr.map((trip) => (
+                    <BoxContent key={trip.eid} trip={trip} />
+                ))
+            )
+        }
+        else{
+            return (
+                <h1>No data</h1>
+            )
+        }
+        
+    }
+
     return (
-            <div id="contents">
-                {tripsSearch.map((trip) => (<BoxContent key={trip.eid} trip={trip} />))}
-            </div>
+        <div id="contents">
+            {renderCard(tripsSearch)}
+        </div>
     )
 }
-
-
 
 export default Search

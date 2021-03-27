@@ -1,9 +1,13 @@
 import React from 'react';
 import Index from './pages/index'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
   return (
-    <Index />
+    <Router>
+        <Index />
+    </Router>
+    
   );
 }
 

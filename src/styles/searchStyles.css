@@ -4,14 +4,40 @@
     width: 100%;
     height: 20vh;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 #seach-bar{
     width: 100%;
-    height: 5vh;
-    background-color: black;
+    height: 10vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: sticky;
     top: 0;
     position: -webkit-sticky;
+}
+#seach-bar-box{
+    width: 800px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+#search{
+    width: 90%;
+    height: 50%;
+    font-size: 2vh;
+    border: none;
+    outline: none;
+    text-align: center;
+    border-bottom: 2.5px solid rgb(133, 133, 133);
+}
+#search:focus::placeholder{
+    color: transparent
 }
 #contents{
     width: 100%;
@@ -22,6 +48,7 @@
     align-content: flex-start;
     align-items: center;
 }
+
 
 /* Components boxConent*/
 .card{
@@ -80,5 +107,7 @@
 .img-info{
     width: 100%;
     border-radius: 15px;
+    max-height: 106.88px;
     object-fit: cover;
+    object-position: 0 35%;
 }

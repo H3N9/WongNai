@@ -1,14 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import defaultImage from '../images/No_picture_available.png'
 
 const BoxContent = ({trip}) => {
     const {title = "", url = "", description = "", photos = [], tags = []} = trip
-    const defaultImage = "%PUBLIC_URL%/logo192.png"
+    photos[3] = undefined
+    const main_photo = photos[0]?? defaultImage
+    const detial_photo_1 = photos[1]?? defaultImage
+    const detial_photo_2 = photos[2]?? defaultImage
+    const detial_photo_3 = photos[3]?? defaultImage
+
     return (
         <div className="card"> 
 
             <div className="main-img-box">
-                {<img className="main-img" src={photos[0]?? defaultImage} alt="mainImage" />}
+                {<img className="main-img" src={main_photo} alt="mainImage" />}
             </div>
 
             <div className="info-card">
@@ -18,7 +24,7 @@ const BoxContent = ({trip}) => {
                 </div>
 
                 <div className="descript">
-                    <p>{description}</p>
+                    {description}
                 </div>
 
                 <div className="tag">
@@ -26,26 +32,15 @@ const BoxContent = ({trip}) => {
                 </div>
 
                 <div className="img-info-container">
-                    <img className="img-info" src={photos[1]?? defaultImage} alt="imgeDetail" />
-                    <img className="img-info" src={photos[2]?? defaultImage} alt="imgeDetail" />
-                    
+                    <img className="img-info" src={detial_photo_1} alt="imgeDetail" />
+                    <img className="img-info" src={detial_photo_2} alt="imgeDetail" />
+                    <img className="img-info" src={detial_photo_3} alt="imgeDetail" />
                 </div>
             </div>
         </div>
     )
 }
 
-const ImageInfo = (url) => {
-    if(url){
-        return (
-            <img className="img-info" src={url} alt="imgeDetail" />
-        )
-    }
-    else {
-        reu
-    }
-    
-}
 
 BoxContent.propTypes = {
     trip: PropTypes.shape({

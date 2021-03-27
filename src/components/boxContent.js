@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import defaultImage from '../images/No_picture_available.png'
+import {Link} from 'react-router-dom'
 
 const BoxContent = ({trip}) => {
     const {title = "", url = "", description = "", photos = [], tags = []} = trip
-    photos[3] = undefined
     const main_photo = photos[0]?? defaultImage
     const detial_photo_1 = photos[1]?? defaultImage
     const detial_photo_2 = photos[2]?? defaultImage
@@ -28,7 +28,7 @@ const BoxContent = ({trip}) => {
                 </div>
 
                 <div className="tag">
-                    <p>หมวด: {tags.map((tag, index) => (<span key={index} >{tag} </span>))}</p>
+                    <p>หมวด: {tags.map((tag, index) => (<Link key={index} to={`/trips?keyword=${tag}`} >{tag} </Link>))}</p>
                 </div>
 
                 <div className="img-info-container">

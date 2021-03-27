@@ -1,5 +1,4 @@
-/* Seach page */
-
+/* Index page */
 #header-box{
     width: 100%;
     height: 20vh;
@@ -39,6 +38,9 @@
 #search:focus::placeholder{
     color: transparent
 }
+
+/* Seach page */
+
 #contents{
     width: 100%;
     height: auto;

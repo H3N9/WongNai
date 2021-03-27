@@ -1,9 +1,9 @@
 import React from 'react';
-import Search from './pages/search'
+import Index from './pages/index'
 
 function App() {
   return (
-    <Search />
+    <Index />
   );
 }
 

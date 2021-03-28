@@ -11,7 +11,7 @@ const BoxContent = ({ trip }) => {
         photos = [],
         tags = [],
     } = trip
-    const main_photo = photos[0] ?? defaultImage // checking if photos doesn't exit, it will replace by default image instead.
+    const main_photo = photos[0] ?? defaultImage // checking if photos doesn't exist, it will replace by default image instead.
     const detial_photo_1 = photos[1] ?? defaultImage
     const detial_photo_2 = photos[2] ?? defaultImage
     const detial_photo_3 = photos[3] ?? defaultImage

@@ -13,7 +13,7 @@ const Index = () => {
     const [textSearch, setTextSearch] = useState("")
     const history = useHistory()
     const query = useQuery()
-    const keyword = query.get("keyword") ?? "" //checking keyword exited
+    const keyword = query.get("keyword") ?? "" //checking keyword existed
 
     const submitHandle = (e) => {
         e.preventDefault()

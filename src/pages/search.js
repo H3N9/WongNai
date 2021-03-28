@@ -8,9 +8,8 @@ const useQuery = () => {
 
 const Search = () => {
     const [trips, setTrips] = useState([])
-    const url = "http://localhost:3001/trips"
     const query = useQuery()
-    const keyword = query.get("keyword") ?? "" //get variable on search params and checking exited
+    const keyword = query.get("keyword") ?? "" //get variable on search params and checking existed
 
     const fetchData = async (url, setJson) => {
         const response = await fetch(url)
@@ -23,20 +22,24 @@ const Search = () => {
         }
     }
 
-    const searchHandle = async () => {
-        const urlSearch = `${url}?keyword=${keyword}` 
-        fetchData(urlSearch, setTrips)
-    }
 
     useEffect(() => {
-        fetchData(url, setTrips) // fetch data at first time
-    }, [])
+        const searchHandle = () => {
+            const url = "http://localhost:3001/trips"
+            if(keyword){
+                const urlSearch = `${url}?keyword=${keyword}`
+                fetchData(urlSearch, setTrips)
+            }
+            else{
+                fetchData(url, setTrips)
+            }
+        }
 
-    useEffect(() => {
         searchHandle() // when keyword update, it will call searchHandle to set new url and call fetchData
+
     }, [keyword])
 
-    const renderCard = (arr) => { //render Cards if they exit
+    const renderCard = (arr) => { //render Cards if they exist
         if(arr.length > 0){
             return (
                 arr.map((trip) => (

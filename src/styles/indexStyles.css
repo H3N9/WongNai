@@ -61,7 +61,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
     background-color: white;
+    margin-bottom: 70px;
 }
 .main-img-box {
     max-width: 300px;
@@ -83,11 +85,15 @@
     display: flex;
     flex-direction: column;
     margin: 10px;
+    overflow: hidden;
 }
 .title-box {
+    background-color: transparent;
     width: 100%;
     overflow: hidden;
     height: 12%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .title{
     text-decoration: none;
@@ -115,13 +121,13 @@
     background-color: transparent;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    align-items: center;
+    align-items: flex-end;
     grid-gap: 10px;
 }
 .img-info {
     width: 100%;
     border-radius: 15px;
-    max-height: 106.88px;
+    height: 80%;
     object-fit: cover;
     object-position: 0 35%;
 }

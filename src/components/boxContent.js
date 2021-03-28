@@ -31,8 +31,8 @@ const BoxContent = ({ trip }) => {
     }
 
     const tagsHandle = (tag, index, arr) => {
-        const beforeLast = arr.length - 2 > -1 ? true:false // before last index
-        if(beforeLast && index === arr.length - 2){
+        const beforeLast = arr.length - 2 > -1 ? true:false // before last. index must have 2 items at least
+        if(beforeLast && index === arr.length - 2){ // set "and" before last item and it won't set when only have one item.
             return (
                 <span key={index}>
                     <Link className="grayText hoverText" to={`/trips?keyword=${tag}`}>
@@ -42,7 +42,7 @@ const BoxContent = ({ trip }) => {
                 </span>
             )
         }
-        else{
+        else{ // normal render
             return (
                 <span key={index}>
                     <Link className="grayText hoverText"  to={`/trips?keyword=${tag}`}>
@@ -51,7 +51,7 @@ const BoxContent = ({ trip }) => {
                     {" "}
                 </span>
             )
-        } // set "and" before last item
+        } // 
         
     }
 
@@ -68,7 +68,7 @@ const BoxContent = ({ trip }) => {
 
                 <div className="descript grayText">
                     <p>
-                        {substringText(description, 200).split('\n').map(splitDescript)}
+                        {substringText(description, 200).split('\n').map(splitDescript)/*limit description 200 characters*/}
                         <span>{" .... "}
                             <a className="dogeText hoverText" href={url}>อ่านต่อ</a>
                         </span>

@@ -3,15 +3,14 @@ import BoxContent from "../components/boxContent"
 import { useLocation } from "react-router-dom"
 
 const useQuery = () => {
-    return new URLSearchParams(useLocation().search)
+    return new URLSearchParams(useLocation().search) // query search params
 }
 
 const Search = () => {
     const [trips, setTrips] = useState([])
-    const [tripsSearch, setTripsSearch] = useState([])
-    const url = "http://localhost:9000/trips"
+    const url = "http://localhost:3001/trips"
     const query = useQuery()
-    const keyword = query.get("keyword") ?? ""
+    const keyword = query.get("keyword") ?? "" //get variable on search params and checking exited
 
     const fetchData = async (url, setJson) => {
         const response = await fetch(url)
@@ -24,35 +23,20 @@ const Search = () => {
         }
     }
 
-    const searchEnging = (target, trip) => {
-        const tagMatching = trip.tags.filter((value) => value.includes(target))
-        const title = trip.title.toLocaleLowerCase()
-        const description = trip.description.toLocaleLowerCase()
-        const toLowerOftext = target.toLocaleLowerCase()
-        if (
-            title.includes(toLowerOftext) ||
-            description.includes(toLowerOftext) ||
-            tagMatching.length > 0
-        ) {
-            return trip
-        }
-        return false
-    }
-
-    const searchHandle = () => {
-        const result = trips.filter((trip) => searchEnging(keyword, trip))
-        setTripsSearch(result)
+    const searchHandle = async () => {
+        const urlSearch = `${url}?keyword=${keyword}` 
+        fetchData(urlSearch, setTrips)
     }
 
     useEffect(() => {
-        fetchData(url, setTrips)
+        fetchData(url, setTrips) // fetch data at first time
     }, [])
 
     useEffect(() => {
-        searchHandle()
-    }, [trips, keyword])
+        searchHandle() // when keyword update, it will call searchHandle to set new url and call fetchData
+    }, [keyword])
 
-    const renderCard = (arr) => {
+    const renderCard = (arr) => { //render Cards if they exit
         if(arr.length > 0){
             return (
                 arr.map((trip) => (
@@ -60,7 +44,7 @@ const Search = () => {
                 ))
             )
         }
-        else{
+        else{ // render no data when can't fetch any data or err occur at back-end or api gateway
             return (
                 <h1>No data</h1>
             )
@@ -70,7 +54,7 @@ const Search = () => {
 
     return (
         <div id="contents">
-            {renderCard(tripsSearch)}
+            {renderCard(trips)}
         </div>
     )
 }
